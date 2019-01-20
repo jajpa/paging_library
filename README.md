@@ -3,7 +3,7 @@
 A Flutter package for paginating a list view
 
 ## Usage
-First import pagination.dart
+First import paging.dart
 
 ```dart
   import 'package:paging/paging.dart';
