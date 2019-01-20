@@ -8,11 +8,11 @@ First import pagination.dart
 ```dart
   import 'package:paging/paging.dart';
 ```
-Simple to use. You can pass a type <T> as a parameter to the widget, by default dynamic is assumed.
+Simple to use. You can pass a type \<T\> as a parameter to the widget, by default dynamic is assumed.
 
 There are two required parameters:
-- pageBuilder: requires a Future of List<T> and gives you the current size of list
-- itemBuilder: requires a widget and gives you the item of type <T> to be displayed
+- pageBuilder: requires a Future of List\<T\> and gives you the current size of list
+- itemBuilder: requires a widget and gives you the item of type \<T\> to be displayed
 
 ```dart
   @override
