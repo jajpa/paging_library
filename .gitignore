@@ -5,6 +5,9 @@
 .packages
 .pub/
 
+example/
+!example/README.md
+
 build/
 ios/.generated/
 ios/Flutter/Generated.xcconfig

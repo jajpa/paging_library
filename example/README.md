@@ -2,15 +2,60 @@
 
 Example for paging library
 
-## Getting Started
+```dart
+import 'package:flutter/material.dart';
+import 'package:paging/paging.dart';
 
-This project is a starting point for a Flutter application.
+void main() => runApp(MyApp());
 
-A few resources to get you started if this is your first Flutter project:
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
+      home: MyHomePage(title: 'Paging Example'),
+    );
+  }
+}
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  static const int _COUNT = 10;
+
+  // mocking a network call
+  Future<List<String>> pageData(int previousCount) async {
+    await Future.delayed(Duration(seconds: 0, milliseconds: 2000));
+    List<String> dummyList = List();
+    if (previousCount < 30) {
+      // stop loading after 30 items
+      for (int i = previousCount; i < previousCount + _COUNT; i++) {
+        dummyList.add('Item $i');
+      }
+    }
+    return dummyList;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: Pagination(
+        pageBuilder: (currentListSize) => pageData(currentListSize),
+        itemBuilder: (item) => ListTile(title: Text(item)),
+      ),
+    );
+  }
+}
+```
