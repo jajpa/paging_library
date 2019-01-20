@@ -5,7 +5,7 @@ author: Joshua Matta<joshuamatta1996@gmail.com>
 homepage: https://github.com/joshmatta/paging_library
 
 environment:
-  sdk: ">=1.19.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
