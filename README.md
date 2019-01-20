@@ -2,6 +2,19 @@
 
 A Flutter package for paginating a list view
 
+[![](https://flutter.zaynjarvis.com/version/paging)](https://pub.dartlang.org/packages/paging)
+[![](https://flutter.zaynjarvis.com/score/paging)](https://pub.dartlang.org/packages/paging)
+
+## Installation
+
+Add this to your package's pubspec.yaml file
+
+```yaml
+dependencies:
+  ...
+  paging: ^0.2.5
+```
+
 ## Usage
 First import paging.dart
 
@@ -32,6 +45,10 @@ There are two required parameters:
     );
   }
 ```
+
+## Screenshots
+
+<image src="./example_screen1.gif"/>
 
 ## Getting Started
 

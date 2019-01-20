@@ -1,6 +1,6 @@
 name: paging
 description: A Flutter package for paginating a list view from network or local storage
-version: 0.0.1
+version: 0.0.2
 author: Joshua Matta<joshuamatta1996@gmail.com>
 homepage: https://github.com/joshmatta/paging_library
 
