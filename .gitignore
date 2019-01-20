@@ -5,7 +5,7 @@
 .packages
 .pub/
 
-example/
+example/*
 !example/README.md
 
 build/
