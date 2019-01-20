@@ -48,7 +48,7 @@ There are two required parameters:
 
 ## Screenshots
 
-<image src="./example_screen1.gif"/>
+<image src="./example_screen1.gif" width="200px"/>
 
 ## Getting Started
 
