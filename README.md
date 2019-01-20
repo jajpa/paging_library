@@ -12,7 +12,7 @@ Add this to your package's pubspec.yaml file
 ```yaml
 dependencies:
   ...
-  paging: ^0.2.5
+  paging: ^latest.version.here
 ```
 
 ## Usage
