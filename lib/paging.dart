@@ -2,7 +2,26 @@ library paging;
 
 import 'package:flutter/material.dart';
 
+/// Signature for a function that returns a Future List of type 'T' i.e. list
+/// of items in a particular page that is being asynchronously called.
+///
+/// Used by [Pagination] widget.
+typedef PaginationBuilder<T> = Future<List<T>> Function(int currentListSize);
+
+/// Signature for a function that creates a widget for a given item of type 'T'.
+typedef ItemWidgetBuilder<T> = Widget Function(T item);
+
+/// A scrollable list which implements pagination.
+///
+/// When scrolled to the end of the list [Pagination] calls [pageBuilder] which
+/// must be implemented which returns a Future List of type 'T'.
+///
+/// [itemBuilder] creates widget instances on demand.
 class Pagination<T> extends StatefulWidget {
+
+  /// Creates a scrollable, paginated, linear array of widgets.
+  ///
+  /// The arguments [pageBuilder], [itemBuilder] must not be null.
   Pagination({
     Key key,
     @required this.pageBuilder,
@@ -78,6 +97,3 @@ class _PaginationState<T> extends State<Pagination<T>> {
     );
   }
 }
-
-typedef PaginationBuilder<T> = Future<List<T>> Function(int currentListSize);
-typedef ItemWidgetBuilder<T> = Widget Function(T item);
