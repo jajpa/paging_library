@@ -18,7 +18,6 @@ typedef ItemWidgetBuilder<T> = Widget Function(T item);
 ///
 /// [itemBuilder] creates widget instances on demand.
 class Pagination<T> extends StatefulWidget {
-
   /// Creates a scrollable, paginated, linear array of widgets.
   ///
   /// The arguments [pageBuilder], [itemBuilder] must not be null.
@@ -32,9 +31,20 @@ class Pagination<T> extends StatefulWidget {
         assert(itemBuilder != null),
         super(key: key);
 
+  /// Called when the list scrolls to an end
+  ///
+  /// Function should return Future List of type 'T'
   final PaginationBuilder<T> pageBuilder;
+
+  /// Called to build children for [Pagination]
+  ///
+  /// Function should return a widget
   final ItemWidgetBuilder<T> itemBuilder;
+
+  /// When non-null [progress] widget is called to show loading progress
   final Widget progress;
+
+  /// Handle error returned by the Future implemented in [pageBuilder]
   final Function(dynamic error) onError;
 
   @override
