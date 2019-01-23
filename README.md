@@ -47,7 +47,7 @@ There are two required parameters:
 
 ## Screenshots
 
-<image src="https://i.imgur.com/JM1HBvE.gifv" width="200px"/>
+<image src="https://i.imgur.com/JM1HBvE.gif" width="250px"/>
 
 ## Getting Started
 
