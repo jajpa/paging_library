@@ -2,8 +2,7 @@
 
 A Flutter package for paginating a list view
 
-[![](https://flutter.zaynjarvis.com/version/paging)](https://pub.dartlang.org/packages/paging)
-[![](https://flutter.zaynjarvis.com/score/paging)](https://pub.dartlang.org/packages/paging)
+[![pub package](https://img.shields.io/pub/v/paging.svg?style=popout)](https://pub.dartlang.org/packages/paging)
 
 ## Installation
 
@@ -48,7 +47,7 @@ There are two required parameters:
 
 ## Screenshots
 
-<image src="./example_screen1.gif" width="200px"/>
+<image src="https://github.com/joshmatta/paging_library/blob/master/example_screen1.gif" width="200px"/>
 
 ## Getting Started
 
