@@ -47,7 +47,7 @@ There are two required parameters:
 
 ## Screenshots
 
-<image src="https://github.com/joshmatta/paging_library/blob/master/example_screen1.gif" width="200px"/>
+<image src="https://i.imgur.com/JM1HBvE.gifv" width="200px"/>
 
 ## Getting Started
 
