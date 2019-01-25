@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 typedef PaginationBuilder<T> = Future<List<T>> Function(int currentListSize);
 
 /// Signature for a function that creates a widget for a given item of type 'T'.
-typedef ItemWidgetBuilder<T> = Widget Function(T item);
+typedef ItemWidgetBuilder<T> = Widget Function(int index, T item);
 
 /// A scrollable list which implements pagination.
 ///
@@ -87,7 +87,7 @@ class _PaginationState<T> extends State<Pagination<T>> {
     return ListView.builder(
       itemBuilder: (context, position) {
         if (position < _list.length) {
-          return widget.itemBuilder(_list[position]);
+          return widget.itemBuilder(position, _list[position]);
         } else if (position == _list.length && !_isEndOfList) {
           fetchMore();
           return widget.progress ??

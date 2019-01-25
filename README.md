@@ -33,7 +33,7 @@ There are two required parameters:
       appBar: AppBar(title: Text('Pagination List')),
       body: Pagination<String>(
         pageBuilder: (currentSize) => pageData(currentSize),
-        itemBuilder: (item){
+        itemBuilder: (index, item){
           return Container(
                     color: Colors.yellow,
                     height: 48,
