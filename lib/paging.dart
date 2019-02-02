@@ -25,6 +25,7 @@ class Pagination<T> extends StatefulWidget {
     Key key,
     @required this.pageBuilder,
     @required this.itemBuilder,
+    this.scrollDirection = Axis.vertical,
     this.progress,
     this.onError,
   })  : assert(pageBuilder != null),
@@ -40,6 +41,9 @@ class Pagination<T> extends StatefulWidget {
   ///
   /// Function should return a widget
   final ItemWidgetBuilder<T> itemBuilder;
+
+  /// Scroll direction of list view
+  final Axis scrollDirection;
 
   /// When non-null [progress] widget is called to show loading progress
   final Widget progress;
@@ -85,6 +89,7 @@ class _PaginationState<T> extends State<Pagination<T>> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      scrollDirection: widget.scrollDirection,
       itemBuilder: (context, position) {
         if (position < _list.length) {
           return widget.itemBuilder(position, _list[position]);
