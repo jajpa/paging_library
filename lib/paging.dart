@@ -72,6 +72,7 @@ class _PaginationState<T> extends State<Pagination<T>> {
           _list.addAll(list);
         });
       }).catchError((error) {
+        _isEndOfList = true;
         print(error);
         if (widget.onError != null) {
           widget.onError(error);
