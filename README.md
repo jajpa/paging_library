@@ -27,6 +27,20 @@ There are two required parameters:
 - itemBuilder: requires a widget and gives you the item of type \<T\> to be displayed
 
 ```dart
+
+  // mocking a network call
+  Future<List<String>> pageData(int previousCount) async {
+    await Future.delayed(Duration(seconds: 0, milliseconds: 2000));
+    List<String> dummyList = List();
+    if (previousCount < 30) {
+      // stop loading after 30 items
+      for (int i = previousCount; i < previousCount + _COUNT; i++) {
+        dummyList.add('Item $i');
+      }
+    }
+    return dummyList;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
