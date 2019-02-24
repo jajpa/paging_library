@@ -1,5 +1,7 @@
 library paging;
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 /// Signature for a function that returns a Future List of type 'T' i.e. list
@@ -28,6 +30,14 @@ class Pagination<T> extends StatefulWidget {
     this.scrollDirection = Axis.vertical,
     this.progress,
     this.onError,
+    this.reverse = false,
+    this.controller,
+    this.primary,
+    this.physics,
+    this.padding,
+    this.itemExtent,
+    this.cacheExtent,
+    this.semanticChildCount,
   })  : assert(pageBuilder != null),
         assert(itemBuilder != null),
         super(key: key);
@@ -50,6 +60,19 @@ class Pagination<T> extends StatefulWidget {
 
   /// Handle error returned by the Future implemented in [pageBuilder]
   final Function(dynamic error) onError;
+
+  final bool reverse;
+  final ScrollController controller;
+  final bool primary;
+  final ScrollPhysics physics;
+  final bool shrinkWrap = false;
+  final EdgeInsetsGeometry padding;
+  final double itemExtent;
+  final bool addAutomaticKeepAlives = true;
+  final bool addRepaintBoundaries = true;
+  final bool addSemanticIndexes = true;
+  final double cacheExtent;
+  final int semanticChildCount;
 
   @override
   _PaginationState<T> createState() => _PaginationState<T>();
@@ -92,26 +115,40 @@ class _PaginationState<T> extends State<Pagination<T>> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: widget.padding,
+      controller: widget.controller,
+      physics: widget.physics,
+      primary: widget.primary,
+      reverse: widget.reverse,
+      shrinkWrap: widget.shrinkWrap,
+      itemExtent: widget.itemExtent,
+      cacheExtent: widget.cacheExtent,
+      addAutomaticKeepAlives: widget.addAutomaticKeepAlives,
+      addRepaintBoundaries: widget.addRepaintBoundaries,
+      addSemanticIndexes: widget.addSemanticIndexes,
       scrollDirection: widget.scrollDirection,
       itemBuilder: (context, position) {
         if (position < _list.length) {
           return widget.itemBuilder(position, _list[position]);
         } else if (position == _list.length && !_isEndOfList) {
           fetchMore();
-          return widget.progress ??
-              Align(
-                child: SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-              );
+          return widget.progress ?? defaultLoading();
         }
         return null;
       },
+    );
+  }
+
+  Widget defaultLoading() {
+    return Align(
+      child: SizedBox(
+        height: 40,
+        width: 40,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: CircularProgressIndicator(),
+        ),
+      ),
     );
   }
 }
