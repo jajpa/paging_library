@@ -91,13 +91,17 @@ class _PaginationState<T> extends State<Pagination<T>> {
         if (list.isEmpty) {
           _isEndOfList = true;
         }
-        setState(() {
-          _list.addAll(list);
-        });
+        if (mounted) {
+          setState(() {
+            _list.addAll(list);
+          });
+        }
       }).catchError((error) {
-        setState(() {
-          _isEndOfList = true;
-        });
+        if (mounted) {
+          setState(() {
+            _isEndOfList = true;
+          });
+        }
         print(error);
         if (widget.onError != null) {
           widget.onError(error);
