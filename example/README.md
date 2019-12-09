@@ -52,8 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: Pagination(
-        pageBuilder: (currentListSize) => pageData(currentListSize),
-        itemBuilder: (item) => ListTile(title: Text(item)),
+        pageBuilder: (currentListSize) => pageData(currentSize),
+        itemBuilder: (index, currentListSize, item) => ListTile(title: Text(item)),
       ),
     );
   }
