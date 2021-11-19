@@ -79,7 +79,7 @@ class Pagination<T> extends StatefulWidget {
 }
 
 class _PaginationState<T> extends State<Pagination<T>> {
-  final List<T> _list = List();
+  final List<T> _list = List.empty();
   bool _isLoading = false;
   bool _isEndOfList = false;
 
@@ -134,7 +134,7 @@ class _PaginationState<T> extends State<Pagination<T>> {
           fetchMore();
           return widget.progress ?? defaultLoading();
         }
-        return null;
+        return const SizedBox.shrink();
       },
     );
   }
