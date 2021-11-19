@@ -24,9 +24,9 @@ class Pagination<T> extends StatefulWidget {
   ///
   /// The arguments [pageBuilder], [itemBuilder] must not be null.
   Pagination({
-    Key key,
-    @required this.pageBuilder,
-    @required this.itemBuilder,
+    Key? key,
+    required this.pageBuilder,
+    required this.itemBuilder,
     this.scrollDirection = Axis.vertical,
     this.progress,
     this.onError,
@@ -56,30 +56,30 @@ class Pagination<T> extends StatefulWidget {
   final Axis scrollDirection;
 
   /// When non-null [progress] widget is called to show loading progress
-  final Widget progress;
+  final Widget? progress;
 
   /// Handle error returned by the Future implemented in [pageBuilder]
-  final Function(dynamic error) onError;
+  final Function(dynamic error)? onError;
 
   final bool reverse;
-  final ScrollController controller;
-  final bool primary;
-  final ScrollPhysics physics;
+  final ScrollController? controller;
+  final bool? primary;
+  final ScrollPhysics? physics;
   final bool shrinkWrap = false;
-  final EdgeInsetsGeometry padding;
-  final double itemExtent;
+  final EdgeInsetsGeometry? padding;
+  final double? itemExtent;
   final bool addAutomaticKeepAlives = true;
   final bool addRepaintBoundaries = true;
   final bool addSemanticIndexes = true;
-  final double cacheExtent;
-  final int semanticChildCount;
+  final double? cacheExtent;
+  final int? semanticChildCount;
 
   @override
   _PaginationState<T> createState() => _PaginationState<T>();
 }
 
 class _PaginationState<T> extends State<Pagination<T>> {
-  final List<T> _list = List();
+  final List<T> _list = List.empty();
   bool _isLoading = false;
   bool _isEndOfList = false;
 
@@ -100,7 +100,7 @@ class _PaginationState<T> extends State<Pagination<T>> {
         });
         print(error);
         if (widget.onError != null) {
-          widget.onError(error);
+          widget.onError!(error);
         }
       });
     }
@@ -134,7 +134,7 @@ class _PaginationState<T> extends State<Pagination<T>> {
           fetchMore();
           return widget.progress ?? defaultLoading();
         }
-        return null;
+        return const SizedBox.shrink();
       },
     );
   }
