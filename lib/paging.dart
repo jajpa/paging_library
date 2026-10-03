@@ -23,10 +23,10 @@ class Pagination<T> extends StatefulWidget {
   /// Creates a scrollable, paginated, linear array of widgets.
   ///
   /// The arguments [pageBuilder], [itemBuilder] must not be null.
-  Pagination({
-    Key key,
-    @required this.pageBuilder,
-    @required this.itemBuilder,
+  const Pagination({
+    super.key,
+    required this.pageBuilder,
+    required this.itemBuilder,
     this.scrollDirection = Axis.vertical,
     this.progress,
     this.onError,
@@ -38,9 +38,7 @@ class Pagination<T> extends StatefulWidget {
     this.itemExtent,
     this.cacheExtent,
     this.semanticChildCount,
-  })  : assert(pageBuilder != null),
-        assert(itemBuilder != null),
-        super(key: key);
+  });
 
   /// Called when the list scrolls to an end
   ///
@@ -56,30 +54,30 @@ class Pagination<T> extends StatefulWidget {
   final Axis scrollDirection;
 
   /// When non-null [progress] widget is called to show loading progress
-  final Widget progress;
+  final Widget? progress;
 
   /// Handle error returned by the Future implemented in [pageBuilder]
-  final Function(dynamic error) onError;
+  final Function(dynamic error)? onError;
 
   final bool reverse;
-  final ScrollController controller;
-  final bool primary;
-  final ScrollPhysics physics;
+  final ScrollController? controller;
+  final bool? primary;
+  final ScrollPhysics? physics;
   final bool shrinkWrap = false;
-  final EdgeInsetsGeometry padding;
-  final double itemExtent;
+  final EdgeInsetsGeometry? padding;
+  final double? itemExtent;
   final bool addAutomaticKeepAlives = true;
   final bool addRepaintBoundaries = true;
   final bool addSemanticIndexes = true;
-  final double cacheExtent;
-  final int semanticChildCount;
+  final double? cacheExtent;
+  final int? semanticChildCount;
 
   @override
-  _PaginationState<T> createState() => _PaginationState<T>();
+  State<Pagination<T>> createState() => _PaginationState<T>();
 }
 
 class _PaginationState<T> extends State<Pagination<T>> {
-  final List<T> _list = List();
+  final List<T> _list = [];
   bool _isLoading = false;
   bool _isEndOfList = false;
 
@@ -87,6 +85,7 @@ class _PaginationState<T> extends State<Pagination<T>> {
     if (!_isLoading) {
       _isLoading = true;
       widget.pageBuilder(_list.length).then((list) {
+        if (!mounted) return;
         _isLoading = false;
         if (list.isEmpty) {
           _isEndOfList = true;
@@ -94,13 +93,14 @@ class _PaginationState<T> extends State<Pagination<T>> {
         setState(() {
           _list.addAll(list);
         });
-      }).catchError((error) {
+      }).catchError((dynamic error) {
+        if (!mounted) return;
         setState(() {
           _isEndOfList = true;
         });
-        print(error);
+        debugPrint(error.toString());
         if (widget.onError != null) {
-          widget.onError(error);
+          widget.onError!(error);
         }
       });
     }
@@ -140,12 +140,12 @@ class _PaginationState<T> extends State<Pagination<T>> {
   }
 
   Widget defaultLoading() {
-    return Align(
+    return const Align(
       child: SizedBox(
         height: 40,
         width: 40,
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(8),
           child: CircularProgressIndicator(),
         ),
       ),

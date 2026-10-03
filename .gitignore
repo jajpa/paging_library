@@ -5,8 +5,6 @@
 .packages
 .pub/
 
-example/*
-!example/README.md
 
 build/
 ios/.generated/

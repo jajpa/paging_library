@@ -30,8 +30,8 @@ There are two required parameters:
 
   // mocking a network call
   Future<List<String>> pageData(int previousCount) async {
-    await Future.delayed(Duration(seconds: 0, milliseconds: 2000));
-    List<String> dummyList = List();
+    await Future.delayed(const Duration(milliseconds: 2000));
+    List<String> dummyList = [];
     if (previousCount < 30) {
       // stop loading after 30 items
       for (int i = previousCount; i < previousCount + _COUNT; i++) {
@@ -44,15 +44,15 @@ There are two required parameters:
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Pagination List')),
+      appBar: AppBar(title: const Text('Pagination List')),
       body: Pagination<String>(
         pageBuilder: (currentSize) => pageData(currentSize),
         itemBuilder: (index, item){
           return Container(
-                    color: Colors.yellow,
-                    height: 48,
-                    child: Text(item),
-                 );
+            color: Colors.yellow,
+            height: 48,
+            child: Text(item),
+          );
         },
       ),
     );
@@ -61,7 +61,7 @@ There are two required parameters:
 
 ## Screenshots
 
-<image src="https://i.imgur.com/JM1HBvE.gif" width="250px"/>
+<img src="screenshot.png" alt="paging_library example" width="600px"/>
 
 ## Getting Started
 
