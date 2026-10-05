@@ -61,7 +61,7 @@ There are two required parameters:
 
 ## Screenshots
 
-<img src="screenshot.png" alt="paging_library example" width="600px"/>
+<img src="https://raw.githubusercontent.com/jajpa/paging_library/master/screenshot.png" alt="paging_library example" width="600px"/>
 
 ## Getting Started
 
