@@ -11,7 +11,7 @@ Add this to your package's pubspec.yaml file
 ```yaml
 dependencies:
   ...
-  paging: ^latest.version.here
+  paging: ^1.0.2
 ```
 
 ## Usage
@@ -61,7 +61,7 @@ There are two required parameters:
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/jajpa/paging_library/master/screenshot.png" alt="paging_library example" width="600px"/>
+![paging_library example](https://raw.githubusercontent.com/jajpa/paging_library/master/example_screen1.gif)
 
 ## Getting Started
 

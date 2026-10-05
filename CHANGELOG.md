@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Restore original preview GIFs and update installation instructions.
+
 ## 1.0.1
 
 * Fix screenshot URLs in README to load properly on pub.dev.
